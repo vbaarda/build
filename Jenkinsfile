@@ -18,12 +18,11 @@ pipeline {
 		stage('Who am I?') { agent any
 			steps {
 				echo "${env.NEW_VAR}"
-
 				sh 'host -t TXT pgp.michaelholley.us | awk -F \'"\' \'{print $2}\''
 			}
 		}
 		stage('Deploy to stage?') {agent none
-			step {
+			steps {
 				input 'Deploy to stage?'
 			}
 		}
