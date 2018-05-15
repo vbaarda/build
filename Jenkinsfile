@@ -16,8 +16,9 @@ pipeline {
 		}
 	
 		stage('Who am I?') { agent any
-			echo "${env.NEW_VAR}"
 			steps {
+				echo "${env.NEW_VAR}"
+
 				sh 'host -t TXT pgp.michaelholley.us | awk -F \'"\' \'{print $2}\''
 			}
 		}
