@@ -26,5 +26,17 @@ pipeline {
 				input 'Deploy to stage?'
 			}
 		}
+		stage('Parallel') { agent any 
+			failFast true
+			parallel {
+				stage('Build 1') {
+					echo "It's ME!"
+
+				}
+				stage('Build 2')  {
+					echo "It's not me!"
+				}
+			}
+		}
 	}
 }
